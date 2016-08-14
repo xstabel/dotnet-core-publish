@@ -2,7 +2,7 @@
 The image is build in docker registry : https://hub.docker.com/r/xstabel/dotnet-core-publish/
 you can pull it :
 ```
-docker pull xstabel/dotnet
+docker pull xstabel/dotnet-core-publish:1.0.0
 ```
 
 It's another approach that you can take to publish your app and then make the published app as part of the Docker image. 
