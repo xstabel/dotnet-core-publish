@@ -1,14 +1,27 @@
-Another approach you can take is to publish the app and then make the published app as part of the Docker image:,
+# Docker image for dotnet core publish
+The image is build in docker registry : https://registry.hub.docker.com/u/xstabel/dotnet/
+you can pull it :
+```
+docker pull xstabel/dotnet
+```
 
-Example: Here I would like to run my app only on Core Clr
+It's another approach that you can take to publish your app and then make the published app as part of the Docker image. 
 
-Run dnu publish --framework dnxcore50 --out ../publishedoutput (Here I explicitly specify framework as your app could be targeting both dnx451 and dnxcore50 and since you are sure you want to run on Core Clr, you can avoid packaging dnx451 related packages...so that's a reduction in image size)
-A docker file which can be used against the above the published directory to create the docker image.
-FROM microsoft/aspnet:1.0.0-rc1-final-coreclr
-COPY . /app/
-WORKDIR /app/approot
-EXPOSE 5004
-ENTRYPOINT ["./kestrel"]
+Example: Here I would like to publish my app only on Core clr in Windows:
+
+```
+dotnet publish --runtime "ubuntu.14.04-x64" -o Mypublishedoutput -c release
+```
+
+Then you can run your application like this:
+
+```
+dotnet myapp.dll
+```
+
+Here I explicitly specify runtime as your app could be targeting both Windows and Linux and since you are sure you want to run on Core Clr, you can avoid packaging other related packages...so that's a reduction in image size!
+
+
 More info:
 Restored packages size is NOT the same as published packages of an application.
-You can understand why this is the case by opening up the restored packages...For example, in the below scenario the published package has only the required content for running the application.
+In the below scenario the published package has only the required content for running the application...
