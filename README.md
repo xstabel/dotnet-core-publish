@@ -1,5 +1,5 @@
 # Docker image for dotnet core publish
-The image is build in docker registry : https://registry.hub.docker.com/u/xstabel/dotnet/
+The image is build in docker registry : https://hub.docker.com/r/xstabel/dotnet-core-publish/
 you can pull it :
 ```
 docker pull xstabel/dotnet
