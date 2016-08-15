@@ -12,16 +12,19 @@ Example: Here I would like to publish my app only on Core clr in Windows:
 ```
 dotnet publish --runtime "ubuntu.14.04-x64" -o Mypublishedoutput -c release
 ```
+Here I explicitly specify runtime as your app could be targeting both Windows and Linux and since you are sure you want to run on Core Clr, you can avoid packaging other related packages...so that's a reduction in image size!
 
 Then you can run your application like this:
 
 ```
 dotnet myapp.dll
 ```
+Run docker image like this:
 
-Here I explicitly specify runtime as your app could be targeting both Windows and Linux and since you are sure you want to run on Core Clr, you can avoid packaging other related packages...so that's a reduction in image size!
+```
+run docker -p 8080:8080 dotnet-core-publish:1.0.0
+```
 
-
-More info:
+**More info:**
 Restored packages size is NOT the same as published packages of an application.
 In the below scenario the published package has only the required content for running the application...
