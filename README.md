@@ -22,9 +22,10 @@ dotnet myapp.dll
 Run docker image sample like this:
 
 ```
-run docker -p 8080:8080 dotnet-core-publish:1.0.0
+docker run -p 8080:8080 dotnet-core-publish:1.0.0
 ```
 
 **More info:**
 Restored packages size is NOT the same as published packages of an application.
-In the below scenario the published package has only the required content for running the application...
+In this scenario the published package has only the required content for running the application in your preferred platform.
+Just use the command dotnet publish. 
